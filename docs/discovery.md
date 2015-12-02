@@ -1,15 +1,14 @@
 <!--[metadata]>
 +++
-title = "Docker Swarm discovery"
+title = "Discovery"
 description = "Swarm discovery"
 keywords = ["docker, swarm, clustering,  discovery"]
 [menu.swarm]
-parent="swarm_workw_swarm"
 weight=4
 +++
 <![end-metadata]-->
 
-# Discovery
+# Swarm Discovery
 
 Docker Swarm comes with multiple Discovery backends.
 
