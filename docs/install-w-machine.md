@@ -5,7 +5,6 @@ description = "Swarm release notes"
 keywords = ["docker, swarm, clustering, discovery, release,  notes"]
 [menu.swarm]
 parent="swarm_workw_swarm"
-weight=9
 +++
 <![end-metadata]-->
 

@@ -5,7 +5,6 @@ description = "High availability in Docker Swarm"
 keywords = ["docker, swarm,  clustering"]
 [menu.swarm]
 parent="swarm_workw_swarm"
-weight=3
 +++
 <![end-metadata]-->
 
