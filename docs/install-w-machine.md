@@ -3,7 +3,7 @@
 title = "Docker Swarm"
 description = "Swarm release notes"
 keywords = ["docker, swarm, clustering, discovery, release,  notes"]
-[menu.main]
+[menu.swarm]
 identifier="swm_install"
 parent="mn_install"
 weight=9

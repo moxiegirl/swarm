@@ -3,7 +3,7 @@
 title = "Docker Swarm API"
 description = "Swarm API"
 keywords = ["docker, swarm, clustering,  api"]
-[menu.main]
+[menu.swarm]
 parent="smn_swarm_ref"
 +++
 <![end-metadata]-->

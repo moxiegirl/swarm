@@ -3,7 +3,7 @@
 title = "High availability in Docker Swarm"
 description = "High availability in Docker Swarm"
 keywords = ["docker, swarm,  clustering"]
-[menu.main]
+[menu.swarm]
 parent="smn_workw_swarm"
 weight=3
 +++

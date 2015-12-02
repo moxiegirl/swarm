@@ -3,7 +3,7 @@
 title = "Docker Swarm discovery"
 description = "Swarm discovery"
 keywords = ["docker, swarm, clustering,  discovery"]
-[menu.main]
+[menu.swarm]
 parent="smn_workw_swarm"
 weight=4
 +++
