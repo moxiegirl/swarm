@@ -4,7 +4,7 @@ title = "Docker Swarm"
 description = "Swarm: a Docker-native clustering system"
 keywords = ["docker, swarm,  clustering"]
 [menu.swarm]
-parent="smn_workw_swarm"
+parent="swarm_workw_swarm"
 +++
 <![end-metadata]-->
 

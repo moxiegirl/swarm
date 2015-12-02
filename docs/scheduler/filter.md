@@ -4,7 +4,7 @@ title = "Docker Swarm filters"
 description = "Swarm filters"
 keywords = ["docker, swarm, clustering,  filters"]
 [menu.swarm]
-parent="smn_workw_swarm"
+parent="swarm_workw_swarm"
 weight=4
 +++
 <![end-metadata]-->
