@@ -4,7 +4,6 @@ title = "Docker Swarm Networking"
 description = "Swarm Networking"
 keywords = ["docker, swarm, clustering,  networking"]
 [menu.swarm]
-parent="swarm_workw_swarm"
 weight=4
 +++
 <![end-metadata]-->
@@ -94,7 +93,7 @@ If two different networks have the same name, you may use `<node>/<name>`.
     8926accb25fd        node-1/bridge          bridge
     6382abccd23d        node-1/none            null
     5262bbfe5616        node-1/bridge2         bridge
-    
+
 `swarm_network` was removed from every node, `bridge2` was removed only
 from `node-0`.
 
@@ -103,4 +102,4 @@ from `node-0`.
 - [User guide](index.md)
 - [Scheduler strategies](scheduler/strategy.md)
 - [Scheduler filters](scheduler/filter.md)
-- [Swarm API](api/swarm-api.md)
+- [Swarm API](swarm-api.md)

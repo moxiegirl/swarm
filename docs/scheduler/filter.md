@@ -441,4 +441,4 @@ This filter will prevent scheduling containers on unhealthy nodes.
 - [User guide](../index.md)
 - [Discovery options](../discovery.md)
 - [Scheduler strategies](strategy.md)
-- [Swarm API](../api/swarm-api.md)
+- [Swarm API](../swarm-api.md)

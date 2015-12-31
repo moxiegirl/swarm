@@ -1,10 +1,10 @@
 <!--[metadata]>
 +++
-title = "Installation"
+title = "Create a swarm sandbox"
 description = "Swarm release notes"
 keywords = ["docker, swarm, clustering, discovery, release,  notes"]
 [menu.swarm]
-parent="swarm_workw_swarm"
+weight=0
 +++
 <![end-metadata]-->
 

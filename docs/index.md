@@ -1,14 +1,15 @@
 <!--[metadata]>
 +++
-title = "Docker Swarm"
+title = "Cluster Docker with Swarm "
 description = "Swarm: a Docker-native clustering system"
 keywords = ["docker, swarm,  clustering"]
 [menu.swarm]
 identifier="swarm_workw_swarm"
+weight=-99
 +++
 <![end-metadata]-->
 
-# Docker Swarm
+# Cluster Docker with Swarm
 
 Docker Swarm is native clustering for Docker. It turns a pool of Docker hosts
 into a single, virtual Docker host. Because Docker Swarm serves the standard
@@ -56,7 +57,7 @@ documents.
 
 ## Swarm API
 
-The [Docker Swarm API](api/swarm-api.md) is compatible with
+The [Docker Swarm API](swarm-api.md) is compatible with
 the [Docker remote
 API](http://docs.docker.com/reference/api/docker_remote_api/), and extends it
 with some new endpoints.

@@ -118,4 +118,4 @@ strategy prefers the node with most containers running.
 - [User guide](../index.md)
 - [Discovery options](../discovery.md)
 - [Scheduler filters](filter.md)
-- [Swarm API](../api/swarm-api.md)
+- [Swarm API](../swarm-api.md)

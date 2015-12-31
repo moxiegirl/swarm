@@ -228,4 +228,4 @@ discovery README in the Docker Swarm repository</a>.
 - [User guide]()
 - [Scheduler strategies](scheduler/strategy.md)
 - [Scheduler filters](scheduler/filter.md)
-- [Swarm API](api/swarm-api.md)
+- [Swarm API](swarm-api.md)
