@@ -8,19 +8,15 @@ parent="workw_swarm"
 +++
 <![end-metadata]-->
 
-# Swarm get started (novice)
+# Evaluate Swarm on Mac or Windows
 
-## Introduction
-
-This getting started example shows you how to create a Docker Swarm, the
-native clustering tool for Docker.
+This getting started example shows you how to create a Docker Swarm cluster. The tutorial is intended for users who are running Mac or Windows and want to evaluate Swarm locally on their system.
 
 When you finish, you'll have a Docker Swarm up and running in VirtualBox on your
 local Mac or Windows computer. You can use this Swarm as personal development
-sandbox.
+sandbox to evaluate Swarm.
 
-To use Docker Swarm on Linux, see [Create a Swarm for
-development](https://docs.docker.com/swarm/install-manual/).
+To use Docker Swarm on Linux, see [Install Swarm for production](https://docs.docker.com/swarm/install-manual/).
 
 ## Install Docker Toolbox
 
@@ -36,6 +32,13 @@ The following sections provide more information on each of these tools. The rest
 
 ## Create three VMs running Docker Engine
 
+This evaluation is intended for users on Mac OSX and Windows.  Neither of these
+operating systems run Docker Engine natively.  For this reason, you'll use
+Docker Machine to provision three VMs in Virtualbox.  The VMs will run a
+small-footprint Linux OS, `boot2docker.iso`, that can host and run the Docker
+Engine software.  Once you create three VMs, you can use the Swarm interactive
+container to cluster and run Swarm on the three virtual Linux hosts.
+
 1. Open a terminal on your computer. Use Docker Machine to list any VMs in VirtualBox.
 
 		$ docker-machine ls
@@ -48,19 +51,56 @@ The following sections provide more information on each of these tools. The rest
 
 3. Create and run a VM named `manager`.  
 
-		$ docker-machine create -d virtualbox manager
+    $ docker-machine create -d virtualbox manager
+    Running pre-create checks...
+    Creating machine...
+    (manager) Copying /Users/mary/.docker/machine/cache/boot2docker.iso to /Users/mary/.docker/machine/machines/manager/boot2docker.iso...
+    (manager) Creating VirtualBox VM...
+    (manager) Creating SSH key...
+    (manager) Starting the VM...
+    (manager) Waiting for an IP...
+    Waiting for machine to be running, this may take a few minutes...
+    Machine is running, waiting for SSH to be available...
+    Detecting operating system of created instance...
+    Detecting the provisioner...
+    Provisioning with boot2docker...
+    Copying certs to the local machine directory...
+    Copying certs to the remote machine...
+    Setting Docker configuration on the remote daemon...
+    Checking connection to Docker...
+    Docker is up and running!
+    To see how to connect Docker to this machine, run: docker-machine env manager
 
-3. Create and run a VM named `agent1`.  
+4. Create and run a VM named `agent1`.  
 
 		$ docker-machine create -d virtualbox agent1
 
-3. Create and run a VM named `agent2`.  
+5. Create and run a VM named `agent2`.  
 
 		$ docker-machine create -d virtualbox agent2
 
-Each command checks for a local copy of the latest VM image called boot2docker.iso. If the latest copy isn't available, Docker Machine downloads the latest image from Docker Hub. Then, Docker Machine uses boot2docker.iso to create a VM that automatically runs Docker Engine.
+6. List all the machines you created.
+
+    $ docker-machine ls
+
 
 ## Create a Swarm discovery token
+
+Swarm networks rely on a discovery service to maintain a list of nodes in a
+Swarm cluster. A discovery service associates a token with instances of the
+Docker Engine daemon running on each node. In this step, you generate the
+discovery service token.
+
+There are several types of discovery backends. For this evaluation, you'll use
+Docker Hub as a hosted discovery service. You should only use Docker Hub as a
+discovery service with Swarm if you are evaluating or testing. Docker Hub
+service may fail in which case it can cause your Swarm cluster operations that
+rely on it to fail also.
+
+**Note**: If you experience problems with Swarm while using Docker Hub as discovery
+backend, check the Docker Hub [status page](http://status.docker.com/) as it
+could be the source of your problem.
+
 
 1. Connect the Docker Client on your computer to the Docker Engine running on `manager`.
 
@@ -71,25 +111,48 @@ Each command checks for a local copy of the latest VM image called boot2docker.i
 2.  Create a unique id for the Swarm cluster.
 
         $ docker run --rm swarm create
-        .
-        .
-        .
+        Unable to find image 'swarm:latest' locally
+        latest: Pulling from library/swarm
+        d681c900c6e3: Pull complete
+        188de6f24f3f: Pull complete
+        90b2ffb8d338: Pull complete
+        237af4efea94: Pull complete
+        3b3fc6f62107: Pull complete
+        7e6c9135b308: Pull complete
+        986340ab62f0: Pull complete
+        a9975e2cc0a3: Pull complete
+        Digest: sha256:c21fd414b0488637b1f05f13a59b032a3f9da5d818d31da1a4ca98a84c0c781b
         Status: Downloaded newer image for swarm:latest
-        f6dc2febe7d321b987d30228e8c7a21b
+        dd0963dab9033e37a3f43cfa33d0bd5b
 
-    The `docker run` command gets the latest `swarm` image and runs it as a container. The `create` argument makes the Swarm container connect to the Docker Hub discovery service and get a unique Swarm ID, also known as a "discovery token". The `--rm` option automatically cleans up the container and removes the file system when the container exits.
+
+    The `docker run` command gets the latest `swarm` image and runs it as a container. The `create` argument makes the Swarm container connect to the Docker Hub discovery service and get a unique Swarm ID, also known as a "discovery token". The value returned by the command is the `dd0963dab9033e37a3f43cfa33d0bd5b` value at the end of the output.
+
+
+
+
 
     The discovery service keeps unused tokens for approximately one week.
 
-3. Copy the discovery token from the last line of the previous output to a safe place.
+3. Copy the discovery token from the last line of `swarm create` output above.
+
+4. Store the token to a safe place as you'll use it later.
 
 ## Create three Swarm nodes
 
-1. Get the IP addresses of the three VMs.
+1. Get the IP addresses of you Swarm manager.
 
-        docker-machine ls
+    As you are using `docker-machine` to manage your nodes, you can use the `ip`
+    command.
 
-2. Use the following syntax to run a Swarm container as the primary Swarm manager on `manager`.
+      $ docker-machine ip manager
+      192.168.99.101  
+
+    In this example, the IP is `192.168.99.101`.
+
+2. Start the Swarm manager on `manager` node.
+
+    The command to run the manager node has this syntax:
 
         docker run -t -p <your_selected_port>:2375 -t swarm manage token://<cluster_id> >
 

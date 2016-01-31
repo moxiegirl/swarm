@@ -8,11 +8,11 @@ parent="workw_swarm"
 +++
 <![end-metadata]-->
 
-# Swarm get started (network pro)
+# Install Swarm for production
 
 This example shows you how to deploy a high-availability Docker Swarm cluster on  Amazon Web Services (AWS). You'll use Docker Engine on Elastic Cloud (EC2) instances on a Virtual Private Cloud (VPC). Then you'll deploy Swarm managers and nodes to those hosts. During this process you'll implement basic network security and set up a discovery backend. Finally, you'll deploy a container on your Swarm cluster and learn how high-availability works when one of the managers or nodes goes down.
 
-For a gentler introduction to Swarm, try the [Swarm get started (novice)](https://docs.docker.com/swarm/install-w-machine/) page.
+For a evaluation introduction to Swarm, try the [Evaluate Swarm on Mac or Windows](https://docs.docker.com/swarm/install-w-machine/) page.
 
 <There are different ways to deploy a Swarm. This topic shows you how to do it ***without using Docker Machine***. For more information about using Docker Machine in a scenario like this one, see: TBD>
 

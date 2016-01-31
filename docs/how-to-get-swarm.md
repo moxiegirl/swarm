@@ -64,7 +64,7 @@ The first time you use the image, the Engine checks to see if you already have t
 
         Run 'swarm COMMAND --help' for more information on a command.
 
-    In this example, the image did not exist on the server, so Engine downloaded it. Then, Engine used the image to create and run Swarm inside a container.  After running the help command, Swarm exited, and Engine stopped the container.
+    In this example, the image did not exist on the server, so Engine downloaded it. Then, Engine used the image to create and run Swarm inside a container.     The `--rm` option automatically cleans up the container and removes the file system when the container exits. After running the help command, Swarm exited, and Engine stopped the container.
 
 3. List the running containers.
 
